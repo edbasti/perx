@@ -1,0 +1,30 @@
+<div class=""main>
+    <mat-form-field class="input" fxFlex="60%">
+        <span matPrefix>
+            <mat-icon>search</mat-icon>
+        </span>
+        <input matInput type="search" (keyup)="doFilter($event)">
+    </mat-form-field>
+    <table mat-table class="lessons-table mat-elevation-z8" [dataSource]="dataSource">
+
+        <ng-container matColumnDef="id">
+            <th *matHeaderCellDef>Id</th>
+            <td *matCellDef="let row">{{row.id}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="title">
+            <th *matHeaderCellDef>Title</th>
+            <td class="description-cell" *matCellDef="let row">{{row.title}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="image">
+            <th *matHeaderCellDef>Image</th>
+            <td class="duration-cell" *matCellDef="let row"><img src="{{row.image}}" /></td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+    </table>
+</div>
